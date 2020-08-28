@@ -30,7 +30,6 @@
     - name: SAVE CONFIGURATION LOCALLY
       vars:
         ansible_connection: ssh
-      shell:
       copy:
         src: "{{config_output.backup_path}}"
         dest: "/backup/{{hostvars['ansible'].datetime}}/{{inventory_hostname}}"
