@@ -21,7 +21,6 @@
 - name: retrieve router configurations
   hosts: all
   gather_facts: no
-
   tasks:
     - name: backup configuration
       include_role:
@@ -31,6 +30,7 @@
     - name: SAVE CONFIGURATION LOCALLY
       vars:
         ansible_connection: ssh
+      shell:
       copy:
         src: "{{config_output.backup_path}}"
         dest: "/backup/{{hostvars['ansible'].datetime}}/{{inventory_hostname}}"
